@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TEST GET</title>
+
+    <script src="https://public.chirp.io/wasm/latest/chirp-connect.js"></script>
+
+</head>
+<body>
+
+    
+    <script>
+        const { Chirp } = ChirpConnectSDK;
+
+        Chirp({
+        key: 'AA5Ce3b6cfcCE52be8C9F267d',
+        onStateChanged: (previous, current) => {
+            console.log(current)
+        },
+        onReceived: data => {
+            if (data.length > 0) {
+            console.log(data)
+            }
+        }
+        }).then(sdk => {
+        sdk.send([0, 1, 2, 3]);
+        }).catch(console.error)
+    </script>
+</body>
+</html>
